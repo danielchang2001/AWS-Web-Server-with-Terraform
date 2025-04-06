@@ -1,5 +1,7 @@
 # AWS Web Server with Terraform
 
+![Animation](https://github.com/user-attachments/assets/7cbf7610-c040-4aba-b1b5-f182551a25fe)
+
 A basic web server on AWS using Terraform. It includes:
 
 - A custom Virtual Private Cloud

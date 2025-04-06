@@ -8,7 +8,7 @@ Practice creating a basic web server on AWS using Terraform. It includes:
 - An Application Load Balancer to load balance between the 2 instances
 - An IGW attached to the VPC, and route table configuration to allow the instances to connect to the internet
 - A SG to allow HTTP and SSH traffic into the EC2 instance
-- An S3 bucket to store static HTML files which are served by the EC2 instances
+- An S3 bucket to store static images served by the EC2 instances (not implemented)
 
 ![Animation](https://github.com/user-attachments/assets/7cbf7610-c040-4aba-b1b5-f182551a25fe)
 

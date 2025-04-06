@@ -1,8 +1,6 @@
 # AWS Web Server with Terraform
 
-![Animation](https://github.com/user-attachments/assets/7cbf7610-c040-4aba-b1b5-f182551a25fe)
-
-A basic web server on AWS using Terraform. It includes:
+Practice creating a basic web server on AWS using Terraform. It includes:
 
 - A custom Virtual Private Cloud
 - 2 public subnets within the VPC in 2 separate AZs
@@ -11,6 +9,8 @@ A basic web server on AWS using Terraform. It includes:
 - An IGW attached to the VPC, and route table configuration to allow the instances to connect to the internet
 - A SG to allow HTTP and SSH traffic into the EC2 instance
 - An S3 bucket to store static HTML files which are served by the EC2 instances
+
+![Animation](https://github.com/user-attachments/assets/7cbf7610-c040-4aba-b1b5-f182551a25fe)
 
 ## Tools Used
 

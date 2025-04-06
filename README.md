@@ -1,4 +1,4 @@
-# AWS-Web-Server-with-Terraform
+# AWS Web Server with Terraform
 
 A basic web server on AWS using Terraform. It includes:
 

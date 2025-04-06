@@ -1,3 +1,7 @@
+#############################################
+# VPC, Subnets, IGW, Route Table, SGs
+#############################################
+
 # Create a VPC
 resource "aws_vpc" "myvpc" {
   cidr_block = var.cidr
@@ -43,4 +47,43 @@ resource "aws_route_table_association" "rta1" {
 resource "aws_route_table_association" "rta2" {
   subnet_id = aws_subnet.sub2.id
   route_table_id = aws_route_table.rt.id
+}
+
+# Security Group for VPC
+resource "aws_security_group" "mysg" {
+  name        = "websg"
+  vpc_id      = aws_vpc.myvpc.id
+}
+
+# Inbound rule for SG to allow HTTP in
+resource "aws_vpc_security_group_ingress_rule" "allow_http_in" {
+  security_group_id = aws_security_group.mysg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 80
+  ip_protocol       = "tcp"
+  to_port           = 80
+}
+
+# Inbound rule for SG to allow SSH in
+resource "aws_vpc_security_group_ingress_rule" "allow_ssh_in" {
+  security_group_id = aws_security_group.mysg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 22
+  ip_protocol       = "tcp"
+  to_port           = 22
+}
+
+# Outbound rule for SG to allow all traffic out
+resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
+  security_group_id = aws_security_group.mysg.id
+  cidr_ipv4         = "0.0.0.0/0"
+  ip_protocol       = "-1" # semantically equivalent to all ports
+}
+
+#############################################
+# S3 and EC2 instances
+#############################################
+
+resource "aws_s3_bucket" "example" {
+  bucket = "daniel-terraform-aws-2025"
 }

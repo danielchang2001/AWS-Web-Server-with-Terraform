@@ -1,5 +1,5 @@
 #############################################
-# VPC, Subnets, IGW, Route Table, SGs
+# VPC, Subnets, IGW, Route Table, SG
 #############################################
 
 # Create a VPC
@@ -81,9 +81,52 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 }
 
 #############################################
-# S3 and EC2 instances
+# S3 bucket
 #############################################
 
-resource "aws_s3_bucket" "example" {
+# Create S3 bucket
+resource "aws_s3_bucket" "mys3" {
   bucket = "daniel-terraform-aws-2025"
 }
+
+# Disable block public access for S3 bucket
+resource "aws_s3_bucket_public_access_block" "mys3_public_access" {
+  bucket = aws_s3_bucket.mys3.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+# Attach a bucket policy for the S3 bucket
+resource "aws_s3_bucket_policy" "mys3_bucket_policy" {
+  bucket = aws_s3_bucket.mys3.id
+  policy = data.aws_iam_policy_document.mys3_bucket_policy_data.json
+
+  depends_on = [aws_s3_bucket_public_access_block.mys3_public_access]
+}
+
+# Create the data for the bucket policy, allowing public read access
+data "aws_iam_policy_document" "mys3_bucket_policy_data" {
+  statement {
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:GetObject",
+      "s3:ListBucket",
+    ]
+
+    resources = [
+      aws_s3_bucket.mys3.arn,
+      "${aws_s3_bucket.mys3.arn}/*",
+    ]
+  }
+}
+
+#############################################
+# EC2 instances within subnets / VPC
+#############################################

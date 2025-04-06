@@ -20,3 +20,7 @@ Practice creating a basic web server on AWS using Terraform. It includes:
 ## Architecture Diagram
 
 ![arch](https://github.com/user-attachments/assets/9800d564-5d00-41df-8ab0-af17aed79510)
+
+## References
+
+https://www.youtube.com/watch?v=Koabqyopqns&list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&index=10

@@ -1,4 +1,4 @@
-# AWS Web Server with Terraform
+# Simple AWS Web Server with Terraform
 
 Practice creating a basic web server on AWS using Terraform. It includes:
 

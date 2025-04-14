@@ -23,4 +23,4 @@ Practice creating a basic web server on AWS using Terraform. It includes:
 
 ## References
 
-Ahishek Veeramalla and CloudChamp on YT: https://www.youtube.com/watch?v=Koabqyopqns&list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&index=10
+Abhishek Veeramalla and CloudChamp on YT: https://www.youtube.com/watch?v=Koabqyopqns&list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf&index=10
